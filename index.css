@@ -1,7 +1,3 @@
-div {
-  margin-top: 1px;
-}
-
 html,
 body,
 .content {
@@ -20,7 +16,7 @@ body {
 }
 
 * {
-  font: 16px/1.5em 'Fira Code', monospace, sans-serif;
+  font: 14px/1.5em 'Fira Code', monospace, sans-serif;
   color: #fff;
 }
 
@@ -122,17 +118,48 @@ section:first-child .command {
   color: green;
 }
 
-.twitter:before {
+.social:before {
   background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center;
   display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
   content: '';
   vertical-align: middle;
-  background-image: url(img/twitter-white.svg);
-  width: 1.2em;
-  height: 1.2em;
+  width: 1em;
+  height: 1em;
+  margin-right: 1em;
+}
+
+.social.twitter:before {
+  background-image: url(img/icons/twitter-white.svg);
+}
+
+.social.youtube:before {
+  background-image: url(img/icons/youtube.svg);
+}
+
+.social.devto:before {
+  background-image: url(img/icons/dev-white.svg);
+}
+
+.social.github:before {
+  background-image: url(img/icons/github-white.svg);
+}
+
+.social.linkedin:before {
+  background-image: url(img/icons/linkedin-logo-white.svg);
+}
+
+.social.reddit:before {
+  background-image: url(img/icons/reddit-white.svg);
+}
+
+.indent {
+  margin-left: 2em;
+}
+
+.spaced {
+  margin-top: 1em;
 }
 
 .bold {
@@ -202,9 +229,10 @@ section:first-child .command {
     content: 'Slides: ';
   }
 
-  .youtube:before {
+  .youtube:not(.social):before {
     content: 'Video: ';
   }
+
   .talk-type:before {
     content: 'Type: ';
   }

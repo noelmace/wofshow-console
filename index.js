@@ -178,4 +178,4 @@ cmdOutput.appendChild(commandRunEl('cat about.txt'));
 cmdOutput.appendChild(commandRunEl('ll talks/'));
 cmdOutput.appendChild(commandRunEl('help'));
 
-consoleInput.focus();
+setTimeout(() => consoleInput.focus(), 0);
