@@ -13,6 +13,16 @@ egg.setAttribute('playsinline', '');
 
 let isMinimized = false;
 
+const consoleInput = document.querySelector('.console-input');
+
+document.body.addEventListener('keyup', () => {
+  const char = String.fromCharCode(event.keyCode).toLowerCase();
+  if (/[a-z]/.test(char) && document.activeElement !== consoleInput) {
+    consoleInput.focus();
+    consoleInput.value = consoleInput.value + char;
+  }
+});
+
 document.querySelector('.ui-btn.close').addEventListener('click', () => {
   if (!isMinimized) {
     document.body.appendChild(egg);
@@ -41,7 +51,6 @@ document.querySelector('.ui-btn.minimize').addEventListener('click', () => {
 });
 
 const cmdOutput = document.querySelector('.cmd-output');
-const consoleInput = document.querySelector('.console-input');
 const helpTemplate = document.getElementById('help');
 const promptTemplate = document.getElementById('prompt');
 
