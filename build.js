@@ -52,10 +52,10 @@ const args = process.argv.slice(2);
     plugins: [imageminWebp()],
   }));
 
-  promises.forEach(async (promise, key) => {
+  await Promise.all([...promises].map(async ([key, promise]) => {
     const rslt = await promise;
     console.log(`${key === 'image' ? rslt.length : '✓'} ${key} files minified`);
-  })
+  }));
   
   await fs.copy('./src/assets', './build/assets');
 
