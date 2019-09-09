@@ -8,7 +8,11 @@ const egg = document.createElement('div');
 egg.classList.add('egg');
 egg.innerHTML = `
   <video src="https://media.giphy.com/media/2xIOiAPXonois/giphy.mp4" class="egg" autoplay loop muted playsinline></video>
-  <img src="assets/img/yellow-egg.png" alt="yellow easter egg" />
+  <picture>
+    <source type="image/webp" srcset="assets/img/yellow-egg.webp">
+    <source type="image/png" srcset="assets/img/yellow-egg.png">
+    <img src="assets/img/yellow-egg.png" alt="yellow easter egg" height="50px">
+  </picture>
   <p>Wild yellow easter egg appeared!</p>
   <p>
     <a
