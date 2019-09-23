@@ -17,4 +17,4 @@ jobs:
         BRANCH: gh-pages
         FOLDER: build
         BUILD_SCRIPT: npm ci && npm run-script build
-        CNAME: wof.show
+        CNAME: console.wof.show
