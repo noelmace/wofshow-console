@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/noelmace/wwofshow-console/issues"
   },
-  "homepage": "https://wof.show",
+  "homepage": "https://console.wof.show",
   "devDependencies": {
     "@node-minify/core": "^4.1.2",
     "@node-minify/cssnano": "^4.1.2",

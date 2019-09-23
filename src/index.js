@@ -16,7 +16,7 @@ egg.innerHTML = `
   <p>Wild yellow easter egg appeared!</p>
   <p>
     <a
-      href="https://twitter.com/intent/tweet?text=I%20captured%20a%20yellow%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fwof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fwof.show"
+      href="https://twitter.com/intent/tweet?text=I%20captured%20a%20yellow%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fconsole.wof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fconsole.wof.show"
       class="social twitter"
       target="_blank"
     >Capture it now!</a>
@@ -35,7 +35,7 @@ document.body.addEventListener('keyup', () => {
   }
 });
 
-const blueUrl = "https://twitter.com/intent/tweet?text=I%20captured%20a%20blue%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fwof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fwof.show"
+const blueUrl = "https://twitter.com/intent/tweet?text=I%20captured%20a%20blue%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fconsole.wof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fconsole.wof.show"
 console.log("%c0", "color: blue; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;");
 console.log(`%cWild Blue Easter Egg appeared!\nCapture it now! => ${blueUrl}`, "color: blue; font-weight: bolder;");
 
