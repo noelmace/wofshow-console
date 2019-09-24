@@ -4,6 +4,33 @@ const commandWithArgs = ['ll talks/', 'cat about.txt', 'cat .foo.txt'];
 const header = document.querySelector('header');
 const content = document.querySelector('.content');
 
+const twitterShare = (eggColor, hashtags) => {
+  const data = {
+    original_referer: 'https://console.wof.show',
+    ref_src: 'twsrc',
+    related: 'noel_mace'
+  };
+  if (eggColor) {
+    data.text = `🎉 I captured a ${eggColor} easter egg 🥚 on console.wof.show !\n@noel_mace`;
+    data.hashtags = 'WofShowConsole, EasterEgg';
+  }
+  if (hashtags) {
+    data.hashtags = hashtags;
+  }
+  return (
+    'https://twitter.com/intent/tweet?' +
+    Object.entries(data)
+      .map(pair => pair.map(encodeURIComponent).join('='))
+      .join('&')
+  );
+};
+
+const addTwitterShareHref = (content) => {
+  [...content.querySelectorAll('.twitter-share')].forEach((el) => {
+    el.setAttribute('href', twitterShare(el.getAttribute('data-egg'), el.getAttribute('data-hashtags')));
+  });
+}
+
 const egg = document.createElement('div');
 egg.classList.add('egg');
 egg.innerHTML = `
@@ -16,12 +43,12 @@ egg.innerHTML = `
   <p>Wild yellow easter egg appeared!</p>
   <p>
     <a
-      href="https://twitter.com/intent/tweet?text=I%20captured%20a%20yellow%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fconsole.wof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fconsole.wof.show"
+      href="${twitterShare('yellow')}"
       class="social twitter"
       target="_blank"
     >Capture it now!</a>
   </p>
-`
+`;
 
 let isMinimized = false;
 
@@ -35,9 +62,9 @@ document.body.addEventListener('keyup', () => {
   }
 });
 
-const blueUrl = "https://twitter.com/intent/tweet?text=I%20captured%20a%20blue%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fconsole.wof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fconsole.wof.show"
-console.log("%c0", "color: blue; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;");
-console.log(`%cWild Blue Easter Egg appeared!\nCapture it now! => ${blueUrl}`, "color: blue; font-weight: bolder;");
+const blueUrl = twitterShare('blue');
+console.log('%c0', 'color: blue; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;');
+console.log(`%cWild Blue Easter Egg appeared!\nCapture it now! => ${blueUrl}`, 'color: blue; font-weight: bolder;');
 
 
 document.querySelector('.ui-btn.close').addEventListener('click', () => {
@@ -108,13 +135,11 @@ const errorEl = cmd => {
 
 const commandRunEl = cmd => {
   let el = errorEl(cmd);
-  const templateId = `cmd_${cmd
-    .replace(/ /g, '_')
-    .replace(/[.\/]/g, '')
-  }`;
+  const templateId = `cmd_${cmd.replace(/ /g, '_').replace(/[.\/]/g, '')}`;
   const cmdTemplate = document.getElementById(templateId);
   if (cmdTemplate) {
     el = document.importNode(cmdTemplate.content, true);
+    addTwitterShareHref(el);
     el.querySelector('section').prepend(commandLineEl(cmd));
   }
   return el;
