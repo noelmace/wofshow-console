@@ -12,7 +12,7 @@ const twitterShare = (eggColor, hashtags) => {
   };
   if (eggColor) {
     data.text = `🎉 I captured a ${eggColor} easter egg 🥚 on console.wof.show !\n@noel_mace`;
-    data.hashtags = 'WofShowConsole, EasterEgg, DevFestToulouse';
+    data.hashtags = 'DevFestToulouse';
   }
   if (hashtags) {
     data.hashtags = hashtags;
