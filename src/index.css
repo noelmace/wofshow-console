@@ -269,6 +269,14 @@ section:first-child .command {
     content: 'Date: ';
   }
 
+  .divider {
+    display: block;
+  }
+
+  .date, .time {
+    display: inline-block;
+  }
+
   .talk-title:before {
     content: 'Title: ';
   }
@@ -288,6 +296,10 @@ section:first-child .command {
   .talk-type:before {
     content: 'Type: ';
   }
+
+  .slides, .video, .event {
+    margin: 1em 0;
+  }  
 }
 
 .ui-titlebar {
