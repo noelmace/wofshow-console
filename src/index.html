@@ -249,7 +249,11 @@
 
     <template id="cmd_cat_footxt">
       <section>
-        <img src="assets/img/red-egg.png" alt="red easter egg" height="30px" />
+        <picture>
+          <source type="image/webp" srcset="assets/img/red-egg.webp">
+          <source type="image/png" srcset="assets/img/red-egg.png">
+          <img src="assets/img/red-egg.png" alt="red easter egg" height="30px">
+        </picture>
         <p>Wild Red Easter Egg appeared!</p>
         <p class="social twitter">
           <a

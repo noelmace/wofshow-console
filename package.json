@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "node build.js",
-    "start": "http-server src"
+    "start": "node build.js --img-only && http-server src"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
     "@node-minify/cssnano": "^4.1.2",
     "@node-minify/google-closure-compiler": "^4.1.2",
     "@node-minify/html-minifier": "^4.1.2",
-    "fs-extra": "^8.1.0"
+    "fs-extra": "^8.1.0",
+    "imagemin": "^7.0.0",
+    "imagemin-webp": "^5.1.0"
   }
 }
