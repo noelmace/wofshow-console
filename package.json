@@ -1,20 +1,21 @@
 {
-  "name": "wwwof",
+  "name": "wofshow-console",
   "version": "1.0.0",
   "description": "All the information you need about The Wof Show, with a console, in the browser.",
   "main": "index.html",
+  "private": true,
   "scripts": {
     "build": "node build.js",
     "start": "http-server src"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/noelmace/wwwwof.git"
+    "url": "git+https://github.com/noelmace/wwofshow-console.git"
   },
   "author": "Noël Macé",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noelmace/wwwwof/issues"
+    "url": "https://github.com/noelmace/wwofshow-console/issues"
   },
   "homepage": "https://wof.show",
   "devDependencies": {
