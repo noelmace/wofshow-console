@@ -14,12 +14,29 @@
 
     <link rel="stylesheet" href="fonts/FiraCode/fira_code.css" />
     <style>
-      body {
-        font: 14px/1.5em 'Fira Code', Roboto, sans-serif;
-        background-color: #121212;
+
+      html, body {
         padding: 0;
         margin: 0;
+        height: 100%;
+      }
+
+      body {
+        font: 14px/1.5em 'Fira Code', Roboto, sans-serif;
+        background: repeat url('img/egg.min.png');
+        animation: slide 5s linear infinite;
         color: #fff;
+      }
+
+      @keyframes slide {
+        from { background-position: 0 0; }
+        to { background-position: -400px 0; }
+      }
+
+      .egg {
+        margin: 1em auto;
+        display: block;
+        max-width: 90%;
       }
 
       .blinking-cursor {
@@ -102,6 +119,9 @@
 
       .content {
         padding: 1em;
+        background-color: #121212;
+        height: calc(100% - 42px - 2em);
+        overflow-y: auto;
       }
 
       .section-title {
@@ -218,12 +238,68 @@
         }
       }
 
+      .ui-titlebar {
+        display: flex;
+        height: 32px;
+        user-select: none;
+        cursor: default;
+      } 
+
+      .ui-titleicon {
+        flex-grow: 1;
+        max-width: 32px;
+        max-height: 32px;
+      }
+      .ui-titletext {
+        flex-grow: 2;
+        max-height: 32px;
+        width: auto;
+        font: 12px/32px "Segoe UI", Arial, sans-serif;
+        color: #fff;
+        text-indent: 10px;
+      }
+      .ui-titlecontrols {
+        max-width: 144px;
+        max-height: 32px;
+        flex-grow: 1;
+      }
+      .ui-btn {
+        margin: 0;
+        width: 48px;
+        height:32px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+      }
+      .ui-btn:hover {
+        background: rgba(255,255,255,.1);
+      }
+      .ui-btn.close:hover {
+        background: #e81123;
+      }
+      .ui-btn svg path, 
+      .ui-btn svg rect, 
+      .ui-btn svg polygon {
+        fill: #fff;
+      }
+      .ui-btn svg {
+        width: 10px;
+        height: 10px;
+      }
+
     </style>
   </head>
 
   <body>
-    <header>
-      <div class="title">The Wof show</div>
+    <header class="ui-titlebar">
+      <div class="title ui-titletext">The Wof show</div>
+      <div class="ui-title-controls">
+          <button class="ui-btn minimize">
+            <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
+          </button><button class="ui-btn close">
+            <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+          </button>
+      </div>
     </header>
     <div class="content">
       <div class="section-title">
@@ -324,5 +400,45 @@
         ><span class="blinking-cursor">_</span>
       </div>
     </div>
+    <script>
+      const header = document.querySelector('header');
+      const content = document.querySelector('.content');
+
+      const egg = document.createElement('video');
+      egg.src = 'https://media.giphy.com/media/2xIOiAPXonois/giphy.mp4';
+      egg.classList.add('egg');
+      egg.setAttribute('loop', '');
+      egg.setAttribute('muted', '');
+      egg.setAttribute('playsinline', '');
+
+      let isMinimized = false;
+
+      document.querySelector('.ui-btn.close').addEventListener('click', () => {
+        if (!isMinimized) {
+          document.body.appendChild(egg);
+          egg.play();
+          content.style.display = 'none';
+        }
+        header.style.display = 'none';
+        setTimeout(() => {
+          header.style.display = 'flex';
+          content.style.display = 'block';
+          document.body.removeChild(document.querySelector('.egg'));
+          isMinimized = false;
+        }, 3000)
+      });
+
+      const close = document.querySelector('.ui-btn.minimize').addEventListener('click', () => {
+        if (!isMinimized) {
+          content.style.display = 'none';
+          document.body.appendChild(egg);
+          egg.play();
+        } else {
+          content.style.display = 'block';
+          document.body.removeChild(document.querySelector('.egg'));
+        }
+        isMinimized = !isMinimized;
+      });
+    </script>
   </body>
 </html>
