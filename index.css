@@ -11,28 +11,22 @@ body {
 }
 
 body {
-  background: repeat url('img/egg.min.png');
-  animation: slide 5s linear infinite;
+  background-color: #555;
 }
-
 * {
   font: 14px/1.5em 'Fira Code', monospace, sans-serif;
   color: #fff;
-}
-
-@keyframes slide {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -400px 0;
-  }
 }
 
 .egg {
   margin: 1em auto;
   display: block;
   max-width: 90%;
+  text-align: center;
+}
+
+.egg img {
+  height: 5em;
 }
 
 .console-input {

@@ -1,15 +1,23 @@
 const commands = ['cat', 'clear', 'help', 'll', 'ls', 'la'];
-const commandWithArgs = ['ll talks/', 'cat about.txt', 'cat .egg.txt'];
+const commandWithArgs = ['ll talks/', 'cat about.txt', 'cat .foo.txt'];
 
 const header = document.querySelector('header');
 const content = document.querySelector('.content');
 
-const egg = document.createElement('video');
-egg.src = 'https://media.giphy.com/media/2xIOiAPXonois/giphy.mp4';
+const egg = document.createElement('div');
 egg.classList.add('egg');
-egg.setAttribute('loop', '');
-egg.setAttribute('muted', '');
-egg.setAttribute('playsinline', '');
+egg.innerHTML = `
+  <video src="https://media.giphy.com/media/2xIOiAPXonois/giphy.mp4" class="egg" autoplay loop muted playsinline></video>
+  <img src="img/yellow-egg.png" alt="yellow easter egg" />
+  <p>Wild yellow easter egg appeared!</p>
+  <p>
+    <a
+      href="https://twitter.com/intent/tweet?text=I%20captured%20a%20yellow%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fwof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fwof.show"
+      class="social twitter"
+      target="_blank"
+    >Capture it now!</a>
+  </p>
+`
 
 let isMinimized = false;
 
@@ -23,10 +31,15 @@ document.body.addEventListener('keyup', () => {
   }
 });
 
+const blueUrl = "https://twitter.com/intent/tweet?text=I%20captured%20a%20blue%20easter%20egg!&hashtags=WofShowConsole%2CEasterEgg&original_referer=https%3A%2F%2Fwof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fwof.show"
+console.log("%c0", "color: blue; font-family: sans-serif; font-size: 4.5em; font-weight: bolder; text-shadow: #000 1px 1px;");
+console.log(`%cWild Blue Easter Egg appeared!\nCapture it now! => ${blueUrl}`, "color: blue; font-weight: bolder;");
+
+
 document.querySelector('.ui-btn.close').addEventListener('click', () => {
   if (!isMinimized) {
     document.body.appendChild(egg);
-    egg.play();
+    egg.querySelector('video').play();
     content.style.display = 'none';
   }
   header.style.display = 'none';
@@ -42,7 +55,7 @@ document.querySelector('.ui-btn.minimize').addEventListener('click', () => {
   if (!isMinimized) {
     content.style.display = 'none';
     document.body.appendChild(egg);
-    egg.play();
+    egg.querySelector('video').play();
   } else {
     content.style.display = 'block';
     document.body.removeChild(document.querySelector('.egg'));
@@ -92,9 +105,9 @@ const errorEl = cmd => {
 const commandRunEl = cmd => {
   let el = errorEl(cmd);
   const templateId = `cmd_${cmd
-    .replace(' ', '_')
-    .replace('.', '')
-    .replace('/', '')}`;
+    .replace(/ /g, '_')
+    .replace(/[.\/]/g, '')
+  }`;
   const cmdTemplate = document.getElementById(templateId);
   if (cmdTemplate) {
     el = document.importNode(cmdTemplate.content, true);
