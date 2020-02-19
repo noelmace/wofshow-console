@@ -273,6 +273,10 @@ section:first-child .command {
     display: inline-block;
   }
 
+  .time {
+    padding-left: 1em;
+  }
+
   .talk-title:before {
     content: 'Title: ';
   }
