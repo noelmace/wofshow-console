@@ -12,12 +12,50 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+    <link rel="stylesheet" href="fonts/FiraCode/fira_code.css">
     <style>
       body {
-        text-align: center;
+        font: 14px/1.5em 'Fira Code', Roboto, sans-serif;
+      }
+
+      .code {
+        font-feature-settings: 'calt' 1; /* Enable ligatures for IE 10+, Edge */
+        text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+        width: 30em;
+        margin: 5em auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .light {
+        font-weight: 300;
+      }
+
+      .regular {
+        font-weight: 400;
+      }
+
+      .medium {
+        font-weight: 500;
+      }
+
+      .bold {
+        font-weight: 700;
+      }
+
+      i {
+        font-style: normal;
+        color: #c33;
+      }
+
+      b {
+        font-weight: inherit;
+        color: #c33;
+      }
+
+      body {
         background-color: #121212;
         color: #fff;
-        font-family: Roboto, sans-serif;
         font-size: 18px;
       }
 
@@ -178,12 +216,7 @@
   </head>
 
   <body>
-    <a
-      href="https://github.com/noelmace/web-on-fire"
-      target="_blank"
-      class="github-corner"
-      aria-label="View source on GitHub"
-    >
+    <a href="https://github.com/noelmace/web-on-fire" target="_blank" class="github-corner" aria-label="View source on GitHub">
       <svg
         width="80"
         height="80"
@@ -207,37 +240,34 @@
     </a>
     <header>
       <div class="title">The Wof show</div>
-      <div class="subtitle">
-        by <a href="https://www.linkedin.com/in/noelmace/" target="_blank">Noël Macé</a>.
-      </div>
+      <div class="subtitle">by <a href="https://www.linkedin.com/in/noelmace/" target="_blank">Noël Macé</a>.</div>
     </header>
     <div class="social">
-        <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw" class="twitter follow-button accent">
-          Follow @noel_mace
-        </a>
-        <a
-          href="https://twitter.com/intent/tweet?button_hashtag=WebOnFIRE&ref_src=twsrc%5Etfw"
-          class="twitter hashtag-button accent"
-        >
-          Tweet #WebOnFIRE
-        </a>
-      </div>
+      <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw" class="twitter follow-button accent">
+        Follow @noel_mace
+      </a>
+      <a href="https://twitter.com/intent/tweet?button_hashtag=WebOnFIRE&ref_src=twsrc%5Etfw" class="twitter hashtag-button accent">
+        Tweet #WebOnFIRE
+      </a>
+    </div>
     <div class="talks">
       <div class="block">
         <div class="date">2019-11-04/05</div>
         <a href="https://devoxx.be/speaker-details/?id=50822" target="_blank" class="event">Devoxx Belgium</a>
-        <h1>The Web is on <br>🔥 F.I.R.E 🔥<br>(Deep Dive)</h1>
+        <h1>The Web is on <br />🔥 F.I.R.E 🔥<br />(Deep Dive)</h1>
         <div class="slides">WIP</div>
       </div>
       <div class="block">
         <div class="date">2019-10-21/22</div>
         <a href="https://devfest.gdgnantes.com/" target="_blank" class="event">Devfest Nantes</a>
-        <h1>The Web is on <br>🔥 F.I.R.E 🔥<br>(conference)</h1>
+        <h1>The Web is on <br />🔥 F.I.R.E 🔥<br />(conference)</h1>
         <div class="slides">WIP</div>
       </div>
       <div class="block">
         <div class="date">2019-10-03</div>
-        <a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/" target="_blank" class="event">Devfest Toulouse</a>
+        <a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/" target="_blank" class="event"
+          >Devfest Toulouse</a
+        >
         <h1>Brace yourself, 🍦 Vanilla is coming ... back 🕶️!</h1>
         <div class="slides">WIP</div>
       </div>
@@ -253,13 +283,13 @@
       <div class="block bow">
         <div class="date">2019-06-06</div>
         <a href="http://bestofweb.paris/" target="_blank" class="event"> Best of Web</a>
-        <h1>The Web is on <br>🔥 F.I.R.E. 🔥<br>(Workshop)</h1>
+        <h1>The Web is on <br />🔥 F.I.R.E. 🔥<br />(Workshop)</h1>
         <a href="https://revealjs.wof.show/BoW-workshop-2019.html" class="slides">slides</a>
       </div>
       <div class="block">
         <div class="date">2019-03-20</div>
         <a href="https://www.breizhcamp.org/" target="_blank" class="event">BreizhCamp </a>
-        <h1>This Web is still on <br>🔥 F.I.R.E. 🔥<br>(Université)</h1>
+        <h1>This Web is still on <br />🔥 F.I.R.E. 🔥<br />(Université)</h1>
         <a href="https://youtu.be/OQ-dr-7pLaA" target="_blank" class="youtube">
           Watch the video
         </a>
@@ -268,14 +298,19 @@
         </a>
       </div>
       <div class="block nantesjs">
-          <div class="date">2019-02-21</div>
-          <a href="https://nantesjs.org/" target="_blank" class="event">NantesJS</a>
-          <h1>ML driven UX made easy with Guess.js</h1>
-          <a href="https://youtu.be/vLhbo-bRTNY" target="_blank" class="youtube">
-            Watch the video
-          </a>
-          <a href="https://docs.google.com/presentation/d/1oh7UBH1FhA5K333au5cqG3Pean57kPXD8lpDj-ELJXk/edit?usp=sharing" class="slides" target="_blank">slides</a>
-        </div>
+        <div class="date">2019-02-21</div>
+        <a href="https://nantesjs.org/" target="_blank" class="event">NantesJS</a>
+        <h1>ML driven UX made easy with Guess.js</h1>
+        <a href="https://youtu.be/vLhbo-bRTNY" target="_blank" class="youtube">
+          Watch the video
+        </a>
+        <a
+          href="https://docs.google.com/presentation/d/1oh7UBH1FhA5K333au5cqG3Pean57kPXD8lpDj-ELJXk/edit?usp=sharing"
+          class="slides"
+          target="_blank"
+          >slides</a
+        >
+      </div>
     </div>
   </body>
 </html>
