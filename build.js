@@ -61,8 +61,6 @@ const args = process.argv.slice(2);
 
   console.log('✓ assets copied');
 
-  await fs.copy('./CNAME', './build/CNAME');
-
   console.log('✓ custom domain name set');
 })();
 
