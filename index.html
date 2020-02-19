@@ -155,21 +155,25 @@
           grid-column: 1;
         }
 
-        .talk-title {
+        .talk-type {
           grid-column: 2;
         }
 
-        .slides {
+        .talk-title {
           grid-column: 3;
+        }
+
+        .slides {
+          grid-column: 4;
 
         }
 
         .youtube {
-          grid-column: 4;
+          grid-column: 5;
         }
 
         .event {
-          grid-column: 5;
+          grid-column: 6;
         }
 
         .head {
@@ -207,6 +211,9 @@
         .youtube:before {
           content: 'Video: ';
         }
+        .talk-type:before {
+          content: 'Type: ';
+        }
       }
 
     </style>
@@ -238,31 +245,36 @@
         <div>repository: <a href="https://github.com/noelmace/web-on-fire">noelmace/web-on-fire</a></div>
       </div>
       <div class="section-title">
-        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>list talks
+        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>ll talks/
       </div>
       <div class="talks">
         <div class="date head">date</div>
+        <div class="talk-type head">type</div>
         <div class="talk-title head">title</div>
         <div class="slides head">slides</div>
         <div class="youtube head">video</div>
         <div class="event head">event</div>
 
         <div class="date">2019-11-04/05</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥 (Deep Dive)</div>
+        <div class="talk-type">Deep Dive</div>
+        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
         <div class="event"><a href="https://devoxx.be/speaker-details/?id=50822" target="_blank">Devoxx Belgium</a></div>
         <span class="divider"></span>
 
         <div class="date">2019-10-21/22</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥 (conference)</div>
+        <div class="talk-type">conf</div>
+        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
         <div class="event"><a href="https://devfest.gdgnantes.com/" target="_blank">Devfest Nantes</a></div>
         <span class="divider"></span>
 
         <div class="date">2019-10-03</div>
+        <div class="talk-type">conf</div>
         <div class="talk-title">Brace yourself, 🍦 Vanilla is coming ... back 🕶️!</div>
         <div class="event" ><a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/"  target="_blank">Devfest Toulouse</a></div>
         <span class="divider"></span>
 
         <div class="date">2019-06-07</div>
+        <div class="talk-type">conf</div>
         <div class="talk-title">PRPL: it's time to join these fantastic four!</div>
         <div class="slides"><a href="https://reveal.wof.show/BoW-PRPL-2019.html">reveal</a></div>
         <div class="youtube"><a href="https://youtu.be/YSn8r0BDKTY" target="_blank">YSn8r0BDKTY</a></div>
@@ -270,19 +282,22 @@
         <span class="divider"></span>
 
         <div class="date">2019-06-06</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E. 🔥 (Workshop)</div>
+        <div class="talk-type">Workshop</div>
+        <div class="talk-title">The Web is on 🔥 F.I.R.E. 🔥</div>
         <div class="slides"><a href="https://revealjs.wof.show/BoW-workshop-2019.html">reveal</a></div>
         <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
         <span class="divider"></span>
 
         <div class="date">2019-03-20</div>
-        <div class="talk-title">This Web is still on 🔥 F.I.R.E. 🔥 (Université)</div>
+        <div class="talk-type">Deep Dive</div>
+        <div class="talk-title">This Web is still on 🔥 F.I.R.E. 🔥</div>
         <div class="slides"><a href="https://revealjs.wof.show/breizhcamp-2019.html">reveal</a></div>
         <div class="youtube"><a href="https://youtu.be/OQ-dr-7pLaA" target="_blank">OQ-dr-7pLaA</a></div>
         <div class="event"><a href="https://www.breizhcamp.org/"  target="_blank">BreizhCamp</a></div>
         <span class="divider"></span>
 
         <div class="date">2019-02-21</div>
+        <div class="talk-type">meetup</div>
         <div class="talk-title">ML driven UX made easy with Guess.js</div>
         <div class="slides">
           <a href="https://docs.google.com/presentation/d/1oh7UBH1FhA5K333au5cqG3Pean57kPXD8lpDj-ELJXk/edit?usp=sharing" target="_blank">
