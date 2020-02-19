@@ -4,31 +4,30 @@ const cssnano = require('@node-minify/cssnano');
 const htmlMinifier = require('@node-minify/html-minifier');
 const fs = require('fs-extra');
 
-minify({
-  compressor: gcc,
-  input: './src/index.js',
-  output: './build/index.js'
-}).then(() => {
-  console.log('>>> js minified');
+fs.remove('./build', async () => {
+  const promises = [];
+  promises.push(minify({
+    compressor: gcc,
+    input: './src/index.js',
+    output: './build/index.js'
+  }));
+  
+  promises.push(minify({
+    compressor: cssnano,
+    input: './src/index.css',
+    output: './build/index.css'
+  }));
+  
+  promises.push(minify({
+    compressor: htmlMinifier,
+    input: './src/index.html',
+    output: './build/index.html',
+  }));
+
+  await Promise.all(promises);
+  
+  await fs.copy('./src/assets', './build/assets');
+
+  await fs.copy('./CNAME', './build/CNAME');
 })
 
-minify({
-  compressor: cssnano,
-  input: './src/index.css',
-  output: './build/index.css'
-}).then(() => {
-  console.log('>>> css minified');
-});
-
-minify({
-  compressor: htmlMinifier,
-  input: './src/index.html',
-  output: './build/index.html',
-}).then(() => {
-  console.log('>>> html minified');
-});
-
-fs.copy('./src/assets', './build/assets', err => {
-  if (err) return console.error(err)
-  console.log('>>> assets copied')
-})
