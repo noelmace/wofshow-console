@@ -15,16 +15,26 @@
     <link rel="stylesheet" href="fonts/FiraCode/fira_code.css" />
     <style>
 
-      html, body {
+      div {
+        margin-top: 1px;
+      }
+
+      html, body, .content {
         padding: 0;
         margin: 0;
+      }
+
+      html,  body  {
         height: 100%;
       }
 
       body {
-        font: 14px/1.5em 'Fira Code', Roboto, sans-serif;
         background: repeat url('img/egg.min.png');
         animation: slide 5s linear infinite;
+      }
+
+      * {
+        font: 16px/1.5em 'Fira Code', monospace, sans-serif;
         color: #fff;
       }
 
@@ -39,64 +49,20 @@
         max-width: 90%;
       }
 
-      .blinking-cursor {
-        font-weight: 100;
+      .console-input {
+        background-color: transparent;
+        border: none;
+        outline: none;
         color: #fff;
-        -webkit-animation: 1s blink step-end infinite;
-        -moz-animation: 1s blink step-end infinite;
-        -ms-animation: 1s blink step-end infinite;
-        -o-animation: 1s blink step-end infinite;
-        animation: 1s blink step-end infinite;
-      }
-
-      @keyframes blink {
-        from,
-        to {
-          color: transparent;
-        }
-        50% {
-          color: #fff;
-        }
-      }
-
-      @-moz-keyframes blink {
-        from,
-        to {
-          color: transparent;
-        }
-        50% {
-          color: #fff;
-        }
-      }
-
-      @-webkit-keyframes blink {
-        from,
-        to {
-          color: transparent;
-        }
-        50% {
-          color: #fff;
-        }
-      }
-
-      @-ms-keyframes blink {
-        from,
-        to {
-          color: transparent;
-        }
-        50% {
-          color: #fff;
-        }
-      }
-
-      @-o-keyframes blink {
-        from,
-        to {
-          color: transparent;
-        }
-        50% {
-          color: #fff;
-        }
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        min-width: calc(100% - 20em);
+        resize: none;
+        display: inline;
       }
 
       a {
@@ -118,35 +84,50 @@
       }
 
       .content {
-        padding: 1em;
+        padding: 20px;
         background-color: #121212;
-        height: calc(100% - 42px - 2em);
+        height: calc(100% - 42px - 40px);
         overflow-y: auto;
       }
 
-      .section-title {
+      .prompt {
+        display: inline;
+      }
+
+      .command {
         margin: 1em 0;
       }
 
-      .section-title:first-child {
+      .help-content {
+        display: grid;
+        grid-template-columns: fit-content(500px) auto;
+        grid-column-gap: 1em;
+      }
+
+      .help-content div:nth-child(2n):before {
+        color: green;
+        content: ' - ';
+      }
+
+      section:first-child .command {
         margin-top: 0;
       }
 
-      .section-title .path:before {
+      .command .path:before {
         content: 'wof';
         color: cyan;
       }
 
-      .section-title .on:before {
+      .command .on:before {
         content: ' on ';
       }
 
-      .section-title .branch:before {
+      .command .branch:before {
         content: ' master';
         color: magenta;
       }
 
-      .section-title .prompt:before {
+      .command .prompt-char:before {
         content: ' ➜ ';
         color: green;
       }
@@ -166,7 +147,7 @@
 
       .bold { font-weight: 600; }
 
-      @media (min-width: 768px) {
+      @media screen and (min-width: 1025px) {
         .talks {
           display: grid;
           grid-column-gap: 1em;
@@ -204,7 +185,7 @@
         }
       }
 
-      @media (max-width: 767px) {
+      @media screen and (max-width: 1024px) {
         .talks .divider:before {
           content: '-----';
           margin: 1em 0;
@@ -243,8 +224,7 @@
         height: 32px;
         user-select: none;
         cursor: default;
-      } 
-
+      }
       .ui-titleicon {
         flex-grow: 1;
         max-width: 32px;
@@ -292,115 +272,148 @@
 
   <body>
     <header class="ui-titlebar">
-      <div class="title ui-titletext">The Wof show</div>
+      <div class="title ui-titletext">Wof show Console</div>
       <div class="ui-title-controls">
-          <button class="ui-btn minimize">
-            <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
-          </button><button class="ui-btn close">
-            <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
-          </button>
+        <button class="ui-btn minimize">
+          <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
+        </button><button class="ui-btn close">
+          <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+        </button>
       </div>
     </header>
     <div class="content">
-      <div class="section-title">
-        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>ls
+      <div class="cmd-output">
       </div>
-
-      <div class="menu">
-        <a class="bold" href="#talks">talks</a>
-        <a href="#infos">about.txt</a> 
-      </div>
-
-      <div class="section-title" id="infos">
-        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>cat about.txt
-      </div>
-
-      <div class="infos">
-        <div>Author: <a href="https://www.linkedin.com/in/noelmace/" target="_blank">Noël Macé</a></div>
-        <div class="twitter">
-          Twitter account:
-          <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw">
-            @noel_mace
-          </a>
-        </div>
-        <div class="twitter">
-          Hashtag:
-          <a href="https://twitter.com/intent/tweet?button_hashtag=WebOnFIRE&ref_src=twsrc%5Etfw">
-            #WofShow
-          </a>
-        </div>
-        <div>repository: <a href="https://github.com/noelmace/web-on-fire">noelmace/web-on-fire</a></div>
-      </div>
-
-      <div class="section-title" id="talks">
-        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>ll talks/
-      </div>
-      <div class="talks">
-        <div class="date head">date</div>
-        <div class="talk-type head">type</div>
-        <div class="talk-title head">title</div>
-        <div class="slides head">slides</div>
-        <div class="youtube head">video</div>
-        <div class="event head">event</div>
-
-        <div class="date">2019-11-04/05</div>
-        <div class="talk-type">Deep Dive</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
-        <div class="event"><a href="https://devoxx.be/speaker-details/?id=50822" target="_blank">Devoxx Belgium</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-10-21/22</div>
-        <div class="talk-type">conf</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
-        <div class="event"><a href="https://devfest.gdgnantes.com/" target="_blank">Devfest Nantes</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-10-03</div>
-        <div class="talk-type">conf</div>
-        <div class="talk-title">Brace yourself, 🍦 Vanilla is coming ... back 🕶️!</div>
-        <div class="event" ><a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/"  target="_blank">Devfest Toulouse</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-06-07</div>
-        <div class="talk-type">conf</div>
-        <div class="talk-title">PRPL: it's time to join these fantastic four!</div>
-        <div class="slides"><a href="https://reveal.wof.show/BoW-PRPL-2019.html">reveal</a></div>
-        <div class="youtube"><a href="https://youtu.be/YSn8r0BDKTY" target="_blank">YSn8r0BDKTY</a></div>
-        <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-06-06</div>
-        <div class="talk-type">Workshop</div>
-        <div class="talk-title">The Web is on 🔥 F.I.R.E. 🔥</div>
-        <div class="slides"><a href="https://revealjs.wof.show/BoW-workshop-2019.html">reveal</a></div>
-        <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-03-20</div>
-        <div class="talk-type">Deep Dive</div>
-        <div class="talk-title">This Web is still on 🔥 F.I.R.E. 🔥</div>
-        <div class="slides"><a href="https://revealjs.wof.show/breizhcamp-2019.html">reveal</a></div>
-        <div class="youtube"><a href="https://youtu.be/OQ-dr-7pLaA" target="_blank">OQ-dr-7pLaA</a></div>
-        <div class="event"><a href="https://www.breizhcamp.org/"  target="_blank">BreizhCamp</a></div>
-        <span class="divider"></span>
-
-        <div class="date">2019-02-21</div>
-        <div class="talk-type">meetup</div>
-        <div class="talk-title">ML driven UX made easy with Guess.js</div>
-        <div class="slides">
-          <a href="https://docs.google.com/presentation/d/1oh7UBH1FhA5K333au5cqG3Pean57kPXD8lpDj-ELJXk/edit?usp=sharing" target="_blank">
-            GSlide
-          </a>
-        </div>
-        <div class="youtube"><a href="https://youtu.be/vLhbo-bRTNY" target="_blank">vLhbo-bRTNY</a></div>
-        <div class="event"><a href="https://nantesjs.org/"  target="_blank">NantesJS</a></div>
-      </div>
-      <div class="section-title">
-        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span
-        ><span class="blinking-cursor">_</span>
+      <div class="command" id="command-input">
+        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt-char"></span
+        ><input type="text" autofocus class='console-input' placeholder="_"></input>
       </div>
     </div>
+    <template id="cmd_ls">
+        <section id="menu">
+          <div class="menu">
+            <a class="bold" href="#talks">talks</a>
+            <a href="#infos">about.txt</a> 
+          </div>
+        </section>
+    </template>
+    <template id="cmd_la">
+        <section id="menu">
+          <div class="menu">
+            <span class="bold">talks</span> about.txt .egg.txt
+          </div>
+        </section>
+    </template>
+    <template id="cmd_cat_abouttxt">
+      <section id="infos">
+        <div class="infos">
+          <div>Author: <a href="https://www.linkedin.com/in/noelmace/" target="_blank">Noël Macé</a></div>
+          <div class="twitter">
+            Twitter account:
+            <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw">
+              @noel_mace
+            </a>
+          </div>
+          <div class="twitter">
+            Hashtag:
+            <a href="https://twitter.com/intent/tweet?button_hashtag=WebOnFIRE&ref_src=twsrc%5Etfw">
+              #WofShow
+            </a>
+          </div>
+          <div>repository: <a href="https://github.com/noelmace/web-on-fire">noelmace/web-on-fire</a></div>
+        </div>
+      </section>
+    </template>
+    <template id="cmd_ll_talks">
+      <section id="talks">
+        <div class="talks">
+          <div class="date head">date</div>
+          <div class="talk-type head">type</div>
+          <div class="talk-title head">title</div>
+          <div class="slides head">slides</div>
+          <div class="youtube head">video</div>
+          <div class="event head">event</div>
+
+          <div class="date">2019-11-04/05</div>
+          <div class="talk-type">Deep Dive</div>
+          <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
+          <div class="event"><a href="https://devoxx.be/speaker-details/?id=50822" target="_blank">Devoxx Belgium</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-10-21/22</div>
+          <div class="talk-type">conf</div>
+          <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
+          <div class="event"><a href="https://devfest.gdgnantes.com/" target="_blank">Devfest Nantes</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-10-03</div>
+          <div class="talk-type">conf</div>
+          <div class="talk-title">Brace yourself, 🍦 Vanilla is coming ... back 🕶️!</div>
+          <div class="event" ><a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/"  target="_blank">Devfest Toulouse</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-06-07</div>
+          <div class="talk-type">conf</div>
+          <div class="talk-title">PRPL: it's time to join these fantastic four!</div>
+          <div class="slides"><a href="https://reveal.wof.show/BoW-PRPL-2019.html">reveal</a></div>
+          <div class="youtube"><a href="https://youtu.be/YSn8r0BDKTY" target="_blank">YSn8r0BDKTY</a></div>
+          <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-06-06</div>
+          <div class="talk-type">Workshop</div>
+          <div class="talk-title">The Web is on 🔥 F.I.R.E. 🔥</div>
+          <div class="slides"><a href="https://revealjs.wof.show/BoW-workshop-2019.html">reveal</a></div>
+          <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-03-20</div>
+          <div class="talk-type">Deep Dive</div>
+          <div class="talk-title">This Web is still on 🔥 F.I.R.E. 🔥</div>
+          <div class="slides"><a href="https://revealjs.wof.show/breizhcamp-2019.html">reveal</a></div>
+          <div class="youtube"><a href="https://youtu.be/OQ-dr-7pLaA" target="_blank">OQ-dr-7pLaA</a></div>
+          <div class="event"><a href="https://www.breizhcamp.org/"  target="_blank">BreizhCamp</a></div>
+          <span class="divider"></span>
+
+          <div class="date">2019-02-21</div>
+          <div class="talk-type">meetup</div>
+          <div class="talk-title">ML driven UX made easy with Guess.js</div>
+          <div class="slides">
+            <a href="https://docs.google.com/presentation/d/1oh7UBH1FhA5K333au5cqG3Pean57kPXD8lpDj-ELJXk/edit?usp=sharing" target="_blank">
+              GSlide
+            </a>
+          </div>
+          <div class="youtube"><a href="https://youtu.be/vLhbo-bRTNY" target="_blank">vLhbo-bRTNY</a></div>
+          <div class="event"><a href="https://nantesjs.org/"  target="_blank">NantesJS</a></div>
+        </div>
+      </section>
+    </template>
+    <template id="cmd_help">
+      <section class="help">
+        <div class="help-content">
+          <div>cat &lt;path&gt;</div><div>print file content on the standard output</div>
+          <div>clear</div><div>clear the terminal screen</div>
+          <div>help</div><div>output this list of commands</div>
+          <div>ll &lt;path&gt;</div><div>list directory contents using a long listing format</div>
+          <div>ls</div><div>list current directory contents</div>
+        </div>
+      </section>
+    </template>
+
+    <template id="prompt">
+      <div class="command">
+        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt-char"></span>
+      </div>
+    </template>
+    
     <script>
+      const commands = ['cat', 'clear', 'help', 'll', 'ls', 'la'];
+      const commandWithArgs = [
+        'll talks/',
+        'cat about.txt',
+        'cat .egg.txt'
+      ];
+
       const header = document.querySelector('header');
       const content = document.querySelector('.content');
 
@@ -439,6 +452,127 @@
         }
         isMinimized = !isMinimized;
       });
+
+      const cmdOutput = document.querySelector('.cmd-output');
+      const consoleInput = document.querySelector('.console-input');
+      const helpTemplate = document.getElementById('help');
+      const promptTemplate = document.getElementById('prompt');
+
+      const commandLineEl = (cmd) => {
+        const el = document.importNode(promptTemplate.content, true);
+        const cmdEl = document.createElement('span');
+        cmdEl.innerText = cmd;
+        el.querySelector('.command').appendChild(cmdEl);
+        return el;
+      }
+
+      const helpEl = (msgs, cmd) => {
+        const el = document.createElement('section');
+        el.appendChild(commandLineEl(cmd));
+      
+        msgs.forEach((msg) => {
+          const msgEl = document.createElement('div');
+          msgEl.innerText = msg;
+          el.appendChild(msgEl);
+        });
+
+        return el;
+      }
+
+      const errorEl = (cmd) => {
+        const el = document.createElement('section');
+        const msgEl = document.createElement('div');
+        const [command, ...args] = cmd.split(' ');
+        msgEl.innerHTML = commands.includes(command)
+          ? (args.length > 0 ? `Error: ${command}: can't use ${args.join(' ')}` : `Error: ${command}: some arguments are missing`)
+          : `wofsh: command not found: ${cmd}`;
+        el.appendChild(msgEl);
+        el.prepend(commandLineEl(cmd));
+        return el;
+      }
+
+      const commandRunEl = (cmd) => {
+        let el = errorEl(cmd);
+        const templateId = `cmd_${cmd.replace(' ', '_').replace('.', '').replace('/', '')}`;
+        const cmdTemplate = document.getElementById(templateId);
+        if (cmdTemplate) {
+          el = document.importNode(cmdTemplate.content, true);
+          section = el.querySelector('section');
+          section.prepend(commandLineEl(cmd));
+        }
+        return el;
+      }
+
+      consoleInput.addEventListener('keydown', (event) => {
+        if (event.keyCode === 9) {
+          event.preventDefault();
+          console.log('tab');
+        }
+      }, false);
+
+      consoleInput.addEventListener('keyup', (event) => {
+        if (event.keyCode === 13 || event.keyCode === 9) {
+          let output;
+          const value = event.srcElement.value;
+          
+
+          switch (event.keyCode) {
+            // "Enter"
+            case 13:
+              event.preventDefault();
+              if (!value) {
+                output = document.createElement('section');
+                const newPrompt = document.importNode(promptTemplate.content, true);
+                output.appendChild(newPrompt);
+              } else if (value === 'clear') {
+                cmdOutput.innerHTML = '';
+              } else {
+                output = commandRunEl(value);
+              }
+              event.srcElement.value = '';
+              break;
+            // tab
+            case 9:
+              event.preventDefault();
+              const [command, ...args] = value.split(' ');
+              const possibleCommands = commands.filter((cmd) => cmd.startsWith(value));
+              const possibleCommandsWithArgs = commandWithArgs.filter((cmd) => cmd.startsWith(value));
+
+              
+              if (!value) {
+                output = helpEl(commands, value);
+              } else if (args.length < 1 && possibleCommands.length === 1 && !commands.includes(command)) {
+                event.srcElement.value = possibleCommands[0];
+              } else if (args.length < 1 && possibleCommands.length > 1) {
+                output = helpEl(possibleCommands, value);
+              } else if (possibleCommandsWithArgs.length > 1 && args.length < 1 && !args[0]) {
+                event.srcElement.value = value + ' ';
+                output = helpEl(possibleCommandsWithArgs.map(c => c.split(' ')[1]), value);
+              } else if (possibleCommandsWithArgs.length === 1 && !commandWithArgs.includes(value)) {
+                event.srcElement.value = possibleCommandsWithArgs[0];
+              } else if (possibleCommandsWithArgs.length > 1) {
+                output = helpEl(possibleCommandsWithArgs.map(c => c.split(' ')[1]), value);
+              } else {
+                event.srcElement.value = `${value}_`;
+                setTimeout(() => event.srcElement.value = value, 200);
+              }
+              break;
+          }
+
+          if (output) {
+            cmdOutput.appendChild(output);
+            event.srcElement.scrollIntoView({behavior: "smooth", block: "start"});
+            event.srcElement.focus();
+          }
+        }
+      }, false);
+
+      cmdOutput.appendChild(commandRunEl('ls'));
+      cmdOutput.appendChild(commandRunEl('cat about.txt'));
+      cmdOutput.appendChild(commandRunEl('ll talks/'));
+      cmdOutput.appendChild(commandRunEl('help'));
+
+      consoleInput.focus();
     </script>
   </body>
 </html>
