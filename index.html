@@ -144,6 +144,8 @@
         height: 1.2em;
       }
 
+      .bold { font-weight: 600; }
+
       @media (min-width: 768px) {
         .talks {
           display: grid;
@@ -225,6 +227,15 @@
     </header>
     <div class="content">
       <div class="section-title">
+        <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>ls
+      </div>
+
+      <div class="menu">
+        <a class="bold" href="#talks">talks</a>
+        <a href="#infos">about.txt</a> 
+      </div>
+
+      <div class="section-title" id="infos">
         <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>cat about.txt
       </div>
 
@@ -244,7 +255,8 @@
         </div>
         <div>repository: <a href="https://github.com/noelmace/web-on-fire">noelmace/web-on-fire</a></div>
       </div>
-      <div class="section-title">
+
+      <div class="section-title" id="talks">
         <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt"></span>ll talks/
       </div>
       <div class="talks">
