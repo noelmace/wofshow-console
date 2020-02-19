@@ -261,10 +261,6 @@ section:first-child .command {
     margin: 1em 0;
   }
 
-  .head {
-    display: none;
-  }
-
   .date:before {
     content: 'Date: ';
   }
@@ -299,7 +295,11 @@ section:first-child .command {
 
   .slides, .video, .event {
     margin: 1em 0;
-  }  
+  } 
+
+  .head {
+    display: none;
+  }
 }
 
 .ui-titlebar {
