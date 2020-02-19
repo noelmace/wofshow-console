@@ -194,7 +194,7 @@ section:first-child .command {
   margin-left: 2em;
 }
 
-.spaced {
+.chapter {
   margin-top: 1em;
 }
 
@@ -241,6 +241,12 @@ section:first-child .command {
   .head {
     font-weight: bold;
     padding-bottom: 0.5em;
+  }
+
+  .chapter {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2em;
   }
 }
 
