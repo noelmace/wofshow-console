@@ -18,55 +18,61 @@
 
   <body>
     <header class="ui-titlebar">
-      <div class="title ui-titletext">Wof show Console</div>
+      <div class="title ui-titletext">Wof Show Console</div>
       <div class="ui-title-controls">
         <button class="ui-btn minimize">
-          <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
-        </button><button class="ui-btn close">
-          <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+          <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg></button
+        ><button class="ui-btn close">
+          <svg viewBox="0 0 10 10">
+            <polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" />
+          </svg>
         </button>
       </div>
     </header>
     <div class="content">
-      <div class="cmd-output">
-      </div>
+      <div class="cmd-output"></div>
       <div class="command" id="command-input">
         <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt-char"></span
-        ><input type="text" autofocus class='console-input' placeholder="_"></input>
+        ><input type="text" autofocus class="console-input" placeholder="_" />
       </div>
     </div>
     <template id="cmd_ls">
-        <section id="menu">
-          <div class="menu">
-            <a class="bold" href="#talks">talks</a>
-            <a href="#infos">about.txt</a> 
-          </div>
-        </section>
+      <section id="menu">
+        <div class="menu">
+          <a class="bold" href="#talks">talks</a>
+          <a href="#infos">about.txt</a>
+        </div>
+      </section>
     </template>
     <template id="cmd_la">
-        <section id="menu">
-          <div class="menu">
-            <span class="bold">talks</span> about.txt .egg.txt
-          </div>
-        </section>
+      <section id="menu">
+        <div class="menu"><span class="bold">talks</span> about.txt .egg.txt</div>
+      </section>
     </template>
     <template id="cmd_cat_abouttxt">
       <section id="infos">
         <div class="infos">
-          <div>Author: <a href="https://www.linkedin.com/in/noelmace/" target="_blank">Noël Macé</a></div>
-          <div class="twitter">
-            Twitter account:
-            <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw">
-              @noel_mace
-            </a>
+          <div class="social github">Repository: <a href="https://github.com/noelmace/wwwwof">noelmace/wwwwof</a></div>
+          <div class="social indent">Open an <a href="https://github.com/noelmace/wwwwof/issues/new">issue</a></div>
+          <div class="spaced">Share:</div>
+          <div class="indent">
+            <div class="social twitter">Tweet
+              <a
+                href="https://twitter.com/intent/tweet?hashtags=WofShowConsole%2C&original_referer=https%3A%2F%2Fwof.show&ref_src=twsrc%5Etfw&related=noelmace&tw_p=tweetbutton&url=https%3A%2F%2Fwof.show"
+                >#WofShowConsole</a
+              >
+            </div>
+            <div class="social reddit">on <a href="https://reddit.com/submit?url=https%3A%2F%2Fwof.show" target="_blank">Reddit</a></div>
+            <div class="social linkedin">on <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Fwof.show" target="_blank">LinkedIn</a></div>
           </div>
-          <div class="twitter">
-            Hashtag:
-            <a href="https://twitter.com/intent/tweet?button_hashtag=WebOnFIRE&ref_src=twsrc%5Etfw">
-              #WofShow
-            </a>
+          <div class="spaced">Author: Noël Macé</div>
+          <div class="indent">
+            <div class="social twitter">Twitter: <a href="https://twitter.com/noel_mace?ref_src=twsrc%5Etfw">@noel_mace</a></div>
+            <div class="social devto">Dev.to: <a href="https://dev.to/noelmace" target="_blank">@noelmace</a></div>
+            <div class="social github">Github: <a href="https://github.com/noelmace">noelmace</a></div>
+            <div class="social youtube">Youtube: <a href="https://tube.noelmace.com">tube.noelmace.com</a></div>
+            <div class="social linkedin">LinkedIn: <a href="https://www.linkedin.com/in/noelmace/" target="_blank">in/noelmace</a></div>
           </div>
-          <div>repository: <a href="https://github.com/noelmace/web-on-fire">noelmace/web-on-fire</a></div>
         </div>
       </section>
     </template>
@@ -82,20 +88,22 @@
 
           <div class="date">2019-11-04/05</div>
           <div class="talk-type">Deep Dive</div>
-          <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
+          <div class="talk-title">The Web is on F.I.R.E.!!</div>
           <div class="event"><a href="https://devoxx.be/speaker-details/?id=50822" target="_blank">Devoxx Belgium</a></div>
           <span class="divider"></span>
 
           <div class="date">2019-10-21/22</div>
           <div class="talk-type">conf</div>
-          <div class="talk-title">The Web is on 🔥 F.I.R.E 🔥</div>
+          <div class="talk-title">The Web is on F.I.R.E.!!</div>
           <div class="event"><a href="https://devfest.gdgnantes.com/" target="_blank">Devfest Nantes</a></div>
           <span class="divider"></span>
 
           <div class="date">2019-10-03</div>
           <div class="talk-type">conf</div>
-          <div class="talk-title">Brace yourself, 🍦 Vanilla is coming ... back 🕶️!</div>
-          <div class="event" ><a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/"  target="_blank">Devfest Toulouse</a></div>
+          <div class="talk-title">Brace yourself, Vanilla is coming ... back!</div>
+          <div class="event">
+            <a href="https://devfesttoulouse.fr/sessions/brace_yourself__vanilla_is_coming__back__/" target="_blank">Devfest Toulouse</a>
+          </div>
           <span class="divider"></span>
 
           <div class="date">2019-06-07</div>
@@ -103,22 +111,22 @@
           <div class="talk-title">PRPL: it's time to join these fantastic four!</div>
           <div class="slides"><a href="https://reveal.wof.show/BoW-PRPL-2019.html">reveal</a></div>
           <div class="youtube"><a href="https://youtu.be/YSn8r0BDKTY" target="_blank">YSn8r0BDKTY</a></div>
-          <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
+          <div class="event"><a href="http://bestofweb.paris/" target="_blank">Best of Web</a></div>
           <span class="divider"></span>
 
           <div class="date">2019-06-06</div>
           <div class="talk-type">Workshop</div>
-          <div class="talk-title">The Web is on 🔥 F.I.R.E. 🔥</div>
+          <div class="talk-title">The Web is on F.I.R.E.!!</div>
           <div class="slides"><a href="https://revealjs.wof.show/BoW-workshop-2019.html">reveal</a></div>
-          <div class="event"><a href="http://bestofweb.paris/"  target="_blank">Best of Web</a></div>
+          <div class="event"><a href="http://bestofweb.paris/" target="_blank">Best of Web</a></div>
           <span class="divider"></span>
 
           <div class="date">2019-03-20</div>
           <div class="talk-type">Deep Dive</div>
-          <div class="talk-title">This Web is still on 🔥 F.I.R.E. 🔥</div>
+          <div class="talk-title">This Web is still on F.I.R.E.!!</div>
           <div class="slides"><a href="https://revealjs.wof.show/breizhcamp-2019.html">reveal</a></div>
           <div class="youtube"><a href="https://youtu.be/OQ-dr-7pLaA" target="_blank">OQ-dr-7pLaA</a></div>
-          <div class="event"><a href="https://www.breizhcamp.org/"  target="_blank">BreizhCamp</a></div>
+          <div class="event"><a href="https://www.breizhcamp.org/" target="_blank">BreizhCamp</a></div>
           <span class="divider"></span>
 
           <div class="date">2019-02-21</div>
@@ -130,7 +138,7 @@
             </a>
           </div>
           <div class="youtube"><a href="https://youtu.be/vLhbo-bRTNY" target="_blank">vLhbo-bRTNY</a></div>
-          <div class="event"><a href="https://nantesjs.org/"  target="_blank">NantesJS</a></div>
+          <div class="event"><a href="https://nantesjs.org/" target="_blank">NantesJS</a></div>
         </div>
       </section>
     </template>
@@ -139,11 +147,16 @@
         <p>Press an alphabetic key or click on the prompt below.</p>
         <p>[Enter] run the command - [Tab] autocomplete</p>
         <div class="help-content">
-          <div>cat &lt;path&gt;</div><div>print file content on the standard output</div>
-          <div>clear</div><div>clear the terminal screen</div>
-          <div>help</div><div>output this list of commands</div>
-          <div>ll &lt;path&gt;</div><div>list directory contents using a long listing format</div>
-          <div>ls</div><div>list current directory contents</div>
+          <div>cat &lt;path&gt;</div>
+          <div>print file content on the standard output</div>
+          <div>clear</div>
+          <div>clear the terminal screen</div>
+          <div>help</div>
+          <div>output this list of commands</div>
+          <div>ll &lt;path&gt;</div>
+          <div>list directory contents using a long listing format</div>
+          <div>ls</div>
+          <div>list current directory contents</div>
         </div>
       </section>
     </template>
@@ -153,7 +166,7 @@
         <span class="path"></span><span class="on"></span><span class="branch"></span><span class="prompt-char"></span>
       </div>
     </template>
-    
+
     <script src="index.js"></script>
   </body>
 </html>
